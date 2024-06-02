@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Styles for messages sent by the user */
+.message.self {
+    display: flex;
+    justify-content: flex-end;
+}
