@@ -1,6 +1,6 @@
 # flutter_chat
 
-Flutter Chat WebSocket
+A new Flutter project.
 
 ## Getting Started
 
