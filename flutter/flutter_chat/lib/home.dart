@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_chat/websocket.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'dart:developer' as developer;
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -66,6 +68,7 @@ class Home extends StatelessWidget {
                             }
                           else
                             {
+                              developer.log("EMpty"),
                               Fluttertoast.showToast(
                                   msg: 'Invalid username',
                                   toastLength: Toast.LENGTH_LONG,
@@ -87,6 +90,22 @@ class Home extends StatelessWidget {
                 ],
               ),
             ),
+          ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
           ),
         ],
       ),
