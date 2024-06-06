@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_chat/component/appbar.dart';
 import 'package:flutter_chat/websocket.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'dart:developer' as developer;
@@ -12,13 +12,7 @@ class Home extends StatelessWidget {
     TextEditingController controller = TextEditingController();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Flutter Chat',
-          style: TextStyle(color: Colors.white, fontSize: 25),
-        ),
-        backgroundColor: Colors.teal[500],
-      ),
+      appBar: myAppBar('Flutter Chat'),
       body: Column(
         children: [
           // Title Container

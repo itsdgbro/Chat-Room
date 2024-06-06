@@ -1,78 +1,70 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_chat_ui/flutter_chat_ui.dart';
-import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+import 'package:flutter_chat/component/appbar.dart';
 
-class ChatRoom extends StatelessWidget {
+class ChatRoom extends StatefulWidget {
   const ChatRoom({super.key});
 
   @override
+  State<ChatRoom> createState() => _ChatRoomState();
+}
+
+class _ChatRoomState extends State<ChatRoom> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Flutter Chat',
-          style: TextStyle(color: Colors.white, fontSize: 25),
-        ),
-        backgroundColor: Colors.teal[500],
-      ),
+      appBar: myAppBar('Chat Room'),
       body: Column(
         children: [
-          SizedBox(
-            width: double.infinity,
-            child: Text(
-              'Chat Room',
-              style: TextStyle(
-                  color: Colors.teal[500],
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
+          const Text('je'),
+          Expanded(
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        cursorColor: Colors.teal[500],
+                        decoration: InputDecoration(
+                          hintText: 'Enter your message',
+                          contentPadding: const EdgeInsets.all(8.0),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(10),
+                            ),
+                            borderSide: BorderSide(color: Colors.teal[500]!),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(10),
+                            ),
+                            borderSide: BorderSide(color: Colors.teal[500]!),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    CircleAvatar(
+                      backgroundColor: Colors.teal[500],
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.send,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
-          const Expanded(child: ChatBox()),
         ],
       ),
-    );
-  }
-}
-
-class ChatBox extends StatefulWidget {
-  const ChatBox({super.key});
-
-  @override
-  State<StatefulWidget> createState() => _ChatBox();
-}
-
-class _ChatBox extends State<ChatBox> {
-  final List<types.Message> _messages = [];
-  final _user = types.User(
-    id: UniqueKey().toString(),
-  );
-
-  void _addMessage(types.Message message) {
-    setState(() {
-      _messages.insert(0, message);
-    });
-  }
-
-  void _handleSendPressed(types.PartialText message) {
-    final textMessage = types.TextMessage(
-      author: _user,
-      createdAt: DateTime.now().millisecondsSinceEpoch,
-      id: UniqueKey().toString(),
-      text: message.text,
-    );
-
-    _addMessage(textMessage);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Chat(
-      scrollPhysics: const BouncingScrollPhysics(),
-      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-      messages: _messages,
-      onSendPressed: _handleSendPressed,
-      user: _user,
     );
   }
 }
