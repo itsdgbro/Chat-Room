@@ -22,6 +22,8 @@ class MyWebSocket {
   late StompClient client;
   bool showError = false;
   late BuildContext context;
+  String username = "";
+  bool isConnected = false;
 
   void setShowError(bool value) {
     showError = value;
@@ -31,8 +33,14 @@ class MyWebSocket {
     this.context = context;
   }
 
+  void setUsername(String name) {
+    username = name;
+  }
+
   void onConnectCallback(StompFrame connectFrame) {
     developer.log('Connected');
+    isConnected = true;
+
     if (Navigator.canPop(context)) {
       return;
     }
@@ -45,7 +53,7 @@ class MyWebSocket {
 
     client = StompClient(
       config: StompConfig.sockJS(
-        url: 'http://10.0.2.2:8081/ws',
+        url: 'http://192.168.1.2:8081/ws',
         onConnect: (StompFrame connectFrame) {
           onConnectCallback(connectFrame);
           completer.complete(); // Mark the connection as completed

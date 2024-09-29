@@ -17,7 +17,7 @@ Widget messageBox({required String sender, required String message}) {
         Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: Colors.teal[200],
+            color: Colors.teal[600],
             borderRadius: BorderRadius.circular(10),
           ),
           child: Text(

@@ -58,6 +58,7 @@ class Home extends StatelessWidget {
                             {
                               MyWebSocket.instance.setShowError(true),
                               MyWebSocket.instance.setContext(context),
+                              MyWebSocket.instance.setUsername(controller.text),
                               MyWebSocket.instance.connectStompSocket(),
                             }
                           else
@@ -84,22 +85,6 @@ class Home extends StatelessWidget {
                 ],
               ),
             ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
           ),
         ],
       ),

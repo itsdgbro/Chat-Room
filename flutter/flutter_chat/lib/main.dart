@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
               textStyle: const TextStyle(color: Colors.white)),
         ),
       ),
-      initialRoute: '/chatroom',
+      initialRoute: '/',
       routes: {
         '/': (ctx) => const Home(),
         '/chatroom': (ctx) => const ChatRoom(),
